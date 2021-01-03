@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/assets/css/login.css" />
     <script src="./assets/lib/jquery.js"></script>
     <script src="/assets/lib/layui/layui.all.js"></script>
+    <!-- <script src="/assets/lib/layui/layui.js"></script> -->
     <script src="/assets/js/login.js"></script>
 </head>
 
@@ -39,8 +40,8 @@
                     <!-- 密码 -->
                     <div class="layui-form-item">
                         <i class="layui-icon layui-icon-password"></i>
-                        <input type="text" name="password" required lay-verify="required" placeholder="请输入密码"
-                            autocomplete="off" class="layui-input">
+                        <input type="password" name="password" required lay-verify="required|pwd|repwd"
+                            placeholder="请输入密码" autocomplete="off" class="layui-input">
                     </div>
 
                     <!-- 登录按钮 -->
@@ -66,14 +67,14 @@
                     <!-- 密码 -->
                     <div class="layui-form-item">
                         <i class="layui-icon layui-icon-password"></i>
-                        <input type="text" name="password" required lay-verify="required" placeholder="请输入密码"
-                            autocomplete="off" class="layui-input">
+                        <input type="password" name="password" required lay-verify="required|pwd|repwd"
+                            placeholder="请输入密码" autocomplete="off" class="layui-input">
                     </div>
                     <!-- 确认密码 -->
                     <div class="layui-form-item">
                         <i class="layui-icon layui-icon-password"></i>
-                        <input type="text" name="repassword" required lay-verify="required" placeholder="再次确认密码"
-                            autocomplete="off" class="layui-input">
+                        <input type="password" name="repassword" required lay-verify="required|pwd|repwd"
+                            placeholder="再次确认密码" autocomplete="off" class="layui-input">
                     </div>
                     <!-- 注册按钮 -->
                     <div class="layui-form-item">
