@@ -13,6 +13,7 @@ $(function () {
 
     // 从 layui 中获取 form 对象
     var form = layui.form
+    // 获取使用layer提示框事件
     var layer = layui.layer
     // 通过 form.verify() 函数自定义校验规则
     form.verify({
@@ -31,48 +32,59 @@ $(function () {
         }
     })
 
-    // 监听注册表单的提交事件
+
+    // 监听注册表单提交事件
     $('#form_reg').on('submit', function (e) {
-        // 1. 阻止默认的提交行为
+        //   阻止默认提交功能 
         e.preventDefault()
-        // 2. 发起Ajax的POST请求
-        var data = {
-            username: $('#form_reg [name=username]').val(),
-            password: $('#form_reg [name=password]').val()
-        }
-        $.post('http://ajax.frontend.itheima.net/api/reguser', data, function (res) {
-            if (res.status !== 0) {
-                return layer.msg(res.message)
-            }
-            layer.msg('注册成功，请登录！')
-            // 模拟人的点击行为
-            $('#link_login').click()
-        })
+        // 发送POST请求
+        $.post('http://api-breakingnews-web.itheima.net/api/reguser',
+            // $.post('http://www.liulongbin.top:3006/api/reguser',
+            {
+                // 请求参数找到form_reg  name=username和password的val()值
+                username: $('#form_reg [name=username]').val(),
+                password: $('#form_reg [name=password]').val(),
+            },
+            // 执行回调函数
+            function (res) {
+                // 0成功 1失败
+                if (res.status !== 0) {
+                    // 调用layer内置msg提示框
+                    return layer.msg(res.message);
+                }
+                layer.msg('注册成功请登录')
+                // 成功执行跳转登录按钮事件自动跳转到登录界面
+                $('#link_login').click()
+            })
     })
 
-    // 监听登录表单的提交事件
+
+    // 监听登录表单提交事件
     $('#form_login').submit(function (e) {
-        // 阻止默认提交行为
         e.preventDefault()
-        $.ajax({
-            url: 'http://ajax.frontend.itheima.net/api/login',
-            method: 'POST',
-            // 快速获取表单中的数据
-            data: $(this).serialize(),
-            success: function (res) {
+        $.post('http://api-breakingnews-web.itheima.net/api/login',
+            // $.post('http://www.liulongbin.top:3006/api/login',
+            {
+                username: $('#form_login [name=username]').val(),
+                password: $('#form_login [name=password]').val(),
+            },
+            function (res) {
                 if (res.status !== 0) {
-                    return layer.msg('登录失败！')
+                    return layer.msg('登陆失败')
                 }
-                layer.msg('登录成功！')
-                // 将登录成功得到的 token 字符串，保存到 localStorage 中
+                layer.msg('登陆成功')
                 localStorage.setItem('token', res.token)
-                // 跳转到后台主页
                 location.href = '/index.html'
             }
-        })
+
+        )
+
     })
 
 
 
 
-})
+
+
+    // -------------------------------------------------------------------
+})//quickly

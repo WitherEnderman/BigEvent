@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .box {
+            width: 50px;
+            height: 50px;
+            /* background-color: pink; */
+            margin: 150px auto;
+            position: relative;
+        }
+
+        .box i {
+            position: absolute;
+            /* line-height: 50px; */
+            transform: translate(50%, 50%);
+
+        }
+
+        .box2 {
+            width: 50px;
+            height: 20px;
+            /* background-color: pink; */
+            position: absolute;
+            left: 20px;
+            top: -50px;
+
+        }
+
+        .ww {
+            width: 80px;
+            height: 80px;
+            border: 1px solid;
+            resize: both;
+            overflow: auto;
+        }
+    </style>
+    <script src="/assets/lib/layui/layui.all.js"></script>
+    <link rel="stylesheet" href="./assets/lib/layui/css/layui.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="ww">
+
+    </div>
+    <div class="box">
+        <i class="layui-icon layui-icon-praise" style="font-size: 30px; color: #1E9FFF;">0</i>
+        <div class="box2"></div>
+    </div>
+
+
+    <script>
+        var box2 = document.querySelector('.box2')
+        var i = document.querySelector('i')
+        var num = 0;
+        var str = ''
+        i.onclick = function () {
+            // alert(1)
+            i.innerHTML++
+
+        }
+        box2.onmouseover = function () {
+            layer.msg('点个赞吧')
+        }
+
+
+    </script>
+</body>
+
+</html>
